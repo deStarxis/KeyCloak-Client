@@ -4,6 +4,7 @@ import com.myclient.keycloakclient.entity.Product;
 import com.myclient.keycloakclient.repository.ProductRepository;
 import com.myclient.keycloakclient.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class ProductController {
     @PostMapping("/admin/products")
 //    @RolesAllowed("admin")
     public ResponseEntity<Product> saveUser(Product product, Principal p){
-        System.out.println(product + "; UserId: " + p.getName());
+        product.setUserId(p.getName());
         return ResponseEntity.ok(productService.addProduct(product));
     }
 
