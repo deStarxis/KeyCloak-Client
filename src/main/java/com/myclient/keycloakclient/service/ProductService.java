@@ -1,6 +1,11 @@
 package com.myclient.keycloakclient.service;
 
 
-public interface ProductService {
+import com.myclient.keycloakclient.entity.Product;
 
+import java.util.List;
+
+public interface ProductService {
+    List<Product> getProducts();
+    Product addProduct(Product product);
 }
